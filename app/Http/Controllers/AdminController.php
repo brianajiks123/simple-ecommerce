@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-use Flasher\Prime\FlasherInterface;
+use App\Models\Product;
 
 class AdminController extends Controller
 {
     /* Category */
-    // View Category
+    // Show Category View
     public function adminViewCategory()
     {
         $categories = Category::select('id', 'name')->get();
@@ -29,7 +29,7 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    // Edit Category
+    // Edit Category View
     public function adminEditCategory($id)
     {
         $category = Category::select('id', 'name')->findOrFail($id);
@@ -56,6 +56,41 @@ class AdminController extends Controller
         $category->delete();
 
         flash()->success('Category Deleted Successfully.');
+
+        return redirect()->back();
+    }
+
+    /* Product */
+    // Add Product View
+    public function adminAddProduct()
+    {
+        $categories = Category::select('id', 'name')->get();
+
+        return view('admin.product', compact('categories'));
+    }
+
+    // Store Product
+    public function adminStoreProduct(Request $request)
+    {
+        $img = $request->image;
+        $img_name = '';
+
+        if ($img) {
+            $img_name = time().'.'.$img->getClientOriginalExtension();
+            $img->move('products', $img_name);
+        }
+
+        $product = new Product;
+        $product->title = $request->title;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->quantity = $request->quantity;
+        $product->category = $request->category;
+        $product->category = $request->category;
+        $product->image = $img_name;
+        $product->save();
+
+        flash()->success('Product Addded Successfully.');
 
         return redirect()->back();
     }
