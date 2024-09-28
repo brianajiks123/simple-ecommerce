@@ -1,19 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Simple E-Commerce | Home Page</title>
+    @include('admin.head')
 </head>
+
 <body>
-    <h1>Admin Page</h1>
+    @include('admin.header')
 
-    <!-- Authentication -->
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-
-        <input type="submit" value="Logout">
-    </form>
+    <div class="d-flex align-items-stretch">
+        @include('admin.sidebar_navigation')
+        
+        @include('admin.content')
+    </div>
+    <!-- JavaScript files-->
+    <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/popper.js/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/jquery.cookie/jquery.cookie.js') }}"></script>
+    <script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('admin/js/charts-home.js') }}"></script>
+    <script src="{{ asset('admin/js/front.js') }}"></script>
 </body>
+
 </html>

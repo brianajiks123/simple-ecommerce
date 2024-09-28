@@ -20,4 +20,4 @@ require __DIR__.'/auth.php';
 
 /* Admin */
 // Home
-Route::get('/admin/dashboard', [HomeController::class, 'adminHome'])->middleware(['auth', 'admin']);
+Route::get('/admin/dashboard', [HomeController::class, 'adminHome'])->middleware(['auth', 'admin'])->name('adminHome');
