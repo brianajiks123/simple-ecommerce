@@ -7,7 +7,6 @@
 {{-- Add Category --}}
 <div class="container">
     <div class="row justify-content-center align-items-center">
-        <div class="col"></div>
         <div class="col-6 text-center">
             <form action="{{ route('adminAddCategory') }}" method="post">
                 @csrf
@@ -19,18 +18,18 @@
                 </div>
             </form>
         </div>
-        <div class="col"></div>
     </div>
 </div>
 
 {{-- Show Category --}}
 <div class="container mt-3">
     <div class="table-responsive">
-        <table class="table table-bordered table-hover text-center">
+        <table class="table table-sm table-hover text-center">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Category Name</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +37,9 @@
                     <tr>
                         <td>{{ $ctg + 1 }}</td>
                         <td>{{ $category->name }}</td>
+                        <td>
+                            <a href="{{ url('/admin/delete-category', $category->id) }}" class="btn btn-danger" onclick="confirmation(event)">Delete</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
