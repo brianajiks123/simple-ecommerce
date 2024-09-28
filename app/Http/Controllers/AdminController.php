@@ -12,7 +12,9 @@ class AdminController extends Controller
     // View Category
     public function adminViewCategory()
     {
-        return view('admin.category');
+        $categories = Category::select('name')->get();
+
+        return view('admin.category', compact('categories'));
     }
 
     // Add Category
