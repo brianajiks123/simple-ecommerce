@@ -29,7 +29,7 @@
                 <tr>
                     <th>#</th>
                     <th>Category Name</th>
-                    <th>Delete</th>
+                    <th>Edit / Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +38,7 @@
                         <td>{{ $ctg + 1 }}</td>
                         <td>{{ $category->name }}</td>
                         <td>
+                            <a href="{{ url('/admin/edit-category', $category->id) }}" class="btn btn-warning">Edit</a>
                             <a href="{{ url('/admin/delete-category', $category->id) }}" class="btn btn-danger" onclick="confirmation(event)">Delete</a>
                         </td>
                     </tr>
