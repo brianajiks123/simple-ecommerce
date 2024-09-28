@@ -4,9 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'home']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -20,5 +18,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+/* Admin */
 // Home
-Route::get('/admin/dashboard', [HomeController::class, 'home'])->middleware(['auth', 'admin']);
+Route::get('/admin/dashboard', [HomeController::class, 'adminHome'])->middleware(['auth', 'admin']);
