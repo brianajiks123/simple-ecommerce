@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Flasher\Prime\FlasherInterface;
 
 class AdminController extends Controller
 {
@@ -20,6 +21,8 @@ class AdminController extends Controller
         $category = new Category;
         $category->name = $request->category;
         $category->save();
+
+        flash()->success('Category Addded Successfully.');
 
         return redirect()->back();
     }
