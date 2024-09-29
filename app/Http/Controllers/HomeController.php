@@ -22,24 +22,42 @@ class HomeController extends Controller
     public function home()
     {
         $products = Product::orderBy('created_at', 'DESC')->limit(3)->get();
+        $user_product_count = 0;
 
-        return view('home.index', compact('products'));
+        if (Auth::id()) {
+            $user_id = Auth::user()->id;
+            $user_product_count = Cart::where('user_id', $user_id)->count();
+        }
+
+        return view('home.index', compact('products', 'user_product_count'));
     }
 
     // Dashboard
     public function userDashboard()
     {
         $products = Product::orderBy('created_at', 'DESC')->limit(3)->get();
+        $user_product_count = 0;
 
-        return view('home.index', compact('products'));
+        if (Auth::id()) {
+            $user_id = Auth::user()->id;
+            $user_product_count = Cart::where('user_id', $user_id)->count();
+        }
+
+        return view('home.index', compact('products', 'user_product_count'));
     }
 
     // Product
     public function userProduct($id)
     {
         $product = Product::findOrFail($id);
+        $user_product_count = 0;
 
-        return view('home.product_detail', compact('product'));
+        if (Auth::id()) {
+            $user_id = Auth::user()->id;
+            $user_product_count = Cart::where('user_id', $user_id)->count();
+        }
+
+        return view('home.product_detail', compact('product', 'user_product_count'));
     }
 
     // Cart
