@@ -47,6 +47,12 @@
                     </div>
                 </div>
             </div>
+            <div class="row d-flex justify-content-center align-items-center mt-5">
+                <div class="col-md text-center">
+                    <a href="{{ url('add-cart', $product->id) }}" class="btn btn-success text-white">Add
+                        Cart</a>
+                </div>
+            </div>
         </div>
     </section>
     <!-- end product section -->

@@ -15,14 +15,14 @@
 
     <!-- cart section -->
     <div class="container">
-        <div class="heading_container heading_center mt-3">
+        <div class="heading_container heading_center my-3">
             <h2>Checkout Cart</h2>
         </div>
-        <div class="row d-flex justify-content-center align-items-center">
+        <div class="row d-flex justify-content-center align-items-center my-3">
             <div class="col-md">
                 <div class="table-responsive">
-                    <table class="table table-sm table-hover text-center">
-                        <thead>
+                    <table class="table table-sm text-center">
+                        <thead class="fw-bold">
                             <tr>
                                 <th>#</th>
                                 <th>Image</th>
@@ -33,6 +33,9 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $price_co = 0;
+                            @endphp
                             @foreach ($user_carts as $ucart => $user_cart)
                                 <tr>
                                     <td class="align-middle">{{ $ucart + 1 }}</td>
@@ -48,10 +51,24 @@
                                             class="btn btn-danger" onclick="confirmation(event)">Delete</a>
                                     </td>
                                 </tr>
+                                @php
+                                    $price_co += $user_cart->product->price;
+                                @endphp
                             @endforeach
+                            <tr>
+                                <td colspan="4" class="align-middle"><b>Total Price (Rp)</b></td>
+                                <td class="align-middle"><b>{{ $price_co }}</b></td>
+                                <td></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center align-items-center my-3">
+            <div class="col-md text-center">
+                <button class="btn btn-primary">Checkout</button>
             </div>
         </div>
     </div>
