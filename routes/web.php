@@ -18,6 +18,7 @@ require __DIR__.'/auth.php';
 Route::get('/', [HomeController::class, 'home']);
 
 Route::get('/dashboard', [HomeController::class, 'userDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/product/{id}', [HomeController::class, 'userProduct'])->name('userProduct');
 
 /* Admin */
 // Dashboard
