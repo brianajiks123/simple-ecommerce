@@ -35,26 +35,40 @@
                 </li>
             </ul>
             <div class="user_option">
-                <a href="{{ url('/login') }}">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <span>
-                        Login
-                    </span>
-                </a>
-                <a href="{{ url('/register') }}">
-                    <i class="fa fa-vcard" aria-hidden="true"></i>
-                    <span>
-                        Register
-                    </span>
-                </a>
-                <a href="">
-                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                </a>
-                <form class="form-inline ">
+                @if (Route::has('login'))
+                    @auth
+                        <a href="">
+                            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                        </a>
+
+                        <form method="POST" action="{{ route('logout') }}" class="ml-4">
+                            @csrf
+
+                            <button type="submit" class="btn btn-outline-danger">
+                                Logout <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    @else
+                        <a href="{{ url('/login') }}">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <span>
+                                Login
+                            </span>
+                        </a>
+                        <a href="{{ url('/register') }}">
+                            <i class="fa fa-vcard" aria-hidden="true"></i>
+                            <span>
+                                Register
+                            </span>
+                        </a>
+                    @endauth
+                @endif
+
+                {{-- <form class="form-inline ">
                     <button class="btn nav_search-btn" type="submit">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
-                </form>
+                </form> --}}
             </div>
         </div>
     </nav>
