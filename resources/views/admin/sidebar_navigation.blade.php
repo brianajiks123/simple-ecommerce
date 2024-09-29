@@ -18,7 +18,6 @@
         <li>
             <a href="{{ route('adminViewCategory') }}"> <i class="icon-grid"></i>Category </a>
         </li>
-
         <li>
             <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i
                     class="icon-windows"></i>Products</a>
@@ -26,8 +25,10 @@
             <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('adminAddProduct') }}">Add Product</a></li>
                 <li><a href="{{ route('adminShowProduct') }}">Show Product</a></li>
-                <li><a href="#">Page</a></li>
             </ul>
+        </li>
+        <li>
+            <a href="{{ route('adminShowOrder') }}"> <i class="icon-grid"></i>Order Product</a>
         </li>
     </ul>
 </nav>

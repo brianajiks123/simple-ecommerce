@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 
 class AdminController extends Controller
@@ -183,6 +184,39 @@ class AdminController extends Controller
         $product->delete();
 
         flash()->success('Product Deleted Successfully.');
+
+        return redirect()->back();
+    }
+
+    /* Order */
+    // Show Order View
+    public function adminShowOrder()
+    {
+        $orders = Order::orderBy('created_at', 'DESC')->paginate(3);
+
+        return view('admin.show_order', compact('orders'));
+    }
+
+    // Process On the way
+    public function adminProcessOtw($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->status = "On the way";
+        $order->save();
+
+        flash()->success("Change Status Order $order->status");
+
+        return redirect()->back();
+    }
+
+    // Process Delivered
+    public function adminProcessDelivered($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->status = "Delivered";
+        $order->save();
+
+        flash()->success("Change Status Order $order->status");
 
         return redirect()->back();
     }

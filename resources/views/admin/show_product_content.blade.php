@@ -24,12 +24,12 @@
 {{-- Show Product --}}
 <div class="container mt-3">
     <div class="table-responsive">
-        <table class="table table-sm table-hover text-center">
+        <table class="table table-sm table-hover table-dark text-center">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Image</th>
-                    <th>Title</th>
+                    <th>Name</th>
                     <th>Description</th>
                     <th>Category</th>
                     <th>Price (Rp)</th>

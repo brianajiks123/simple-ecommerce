@@ -24,7 +24,7 @@
 {{-- Show Category --}}
 <div class="container mt-3">
     <div class="table-responsive">
-        <table class="table table-sm table-hover text-center">
+        <table class="table table-sm table-hover table-dark text-center">
             <thead>
                 <tr>
                     <th>#</th>

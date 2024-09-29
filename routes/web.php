@@ -47,3 +47,8 @@ Route::post('/admin/store-product', [AdminController::class, 'adminStoreProduct'
 Route::get('/admin/edit-product/{id}', [AdminController::class, 'adminEditProduct'])->middleware(['auth', 'admin'])->name('adminEditProduct');
 Route::post('/admin/update-product/{id}', [AdminController::class, 'adminUpdateProduct'])->middleware(['auth', 'admin'])->name('adminUpdateProduct');
 Route::get('/admin/delete-product/{id}', [AdminController::class, 'adminDeleteProduct'])->middleware(['auth', 'admin'])->name('adminDeleteProduct');
+
+// Order
+Route::get('/admin/view-order', [AdminController::class, 'adminShowOrder'])->middleware(['auth', 'admin'])->name('adminShowOrder');
+Route::get('/admin/process-otw/{id}', [AdminController::class, 'adminProcessOtw'])->middleware(['auth', 'admin'])->name('adminProcessOtw');
+Route::get('/admin/process-delivered/{id}', [AdminController::class, 'adminProcessDelivered'])->middleware(['auth', 'admin'])->name('adminProcessDelivered');
