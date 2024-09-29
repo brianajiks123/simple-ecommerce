@@ -5,12 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 
-Route::get('/', [HomeController::class, 'home']);
-
-Route::get('/dashboard', function () {
-    return view('home.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+// Auth
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -19,8 +14,13 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-/* Admin */
 // Home
+Route::get('/', [HomeController::class, 'home']);
+
+Route::get('/dashboard', [HomeController::class, 'userDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+
+/* Admin */
+// Dashboard
 Route::get('/admin/dashboard', [HomeController::class, 'adminHome'])->middleware(['auth', 'admin'])->name('adminHome');
 
 // Category

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,6 +18,16 @@ class HomeController extends Controller
     // Home Page
     public function home()
     {
-        return view('home.index');
+        $products = Product::orderBy('created_at', 'DESC')->get();
+
+        return view('home.index', compact('products'));
+    }
+
+    // Dashboard
+    public function userDashboard()
+    {
+        $products = Product::orderBy('created_at', 'DESC')->get();
+
+        return view('home.index', compact('products'));
     }
 }
