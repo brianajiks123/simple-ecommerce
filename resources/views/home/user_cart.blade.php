@@ -18,57 +18,81 @@
         <div class="heading_container heading_center my-3">
             <h2>Checkout Cart</h2>
         </div>
-        <div class="row d-flex justify-content-center align-items-center my-3">
-            <div class="col-md">
-                <div class="table-responsive">
-                    <table class="table table-sm text-center">
-                        <thead class="fw-bold">
-                            <tr>
-                                <th>#</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Price (Rp)</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                                $price_co = 0;
-                            @endphp
-                            @foreach ($user_carts as $ucart => $user_cart)
-                                <tr>
-                                    <td class="align-middle">{{ $ucart + 1 }}</td>
-                                    <td class="align-middle">
-                                        <img src="/products/{{ $user_cart->product->image }}"
-                                            alt="{{ $user_cart->product->title }}" width="250">
-                                    </td>
-                                    <td class="align-middle">{{ $user_cart->product->title }}</td>
-                                    <td class="align-middle">{{ $user_cart->product->description }}</td>
-                                    <td class="align-middle">{{ $user_cart->product->price }}</td>
-                                    <td class="align-middle">
-                                        <a href="{{ url('/delete-product-cart', $user_cart->product->id) }}"
-                                            class="btn btn-danger" onclick="confirmation(event)">Delete</a>
-                                    </td>
-                                </tr>
-                                @php
-                                    $price_co += $user_cart->product->price;
-                                @endphp
-                            @endforeach
-                            <tr>
-                                <td colspan="4" class="align-middle"><b>Total Price (Rp)</b></td>
-                                <td class="align-middle"><b>{{ $price_co }}</b></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        <div class="row d-flex justify-content-between my-3">
+            <div class="col-md-4">
+                <form action="{{ route('userOrderProduct') }}" method="post">
+                    @csrf
 
-        <div class="row d-flex justify-content-center align-items-center my-3">
-            <div class="col-md text-center">
-                <button class="btn btn-primary">Checkout</button>
+                    <div class="mb-3">
+                        <label for="receiver_name">Full Name</label>
+                        <input type="text" name="receiver_name" id="receiver_name" class="form-control fs-3"
+                            placeholder="full name" value="{{ Auth::user()->name }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="receiver_address">Address</label>
+                        <textarea name="receiver_address" id="receiver_address" class="form-control fs-3" cols="30" rows="10"
+                            placeholder="address">{{ Auth::user()->address }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="receiver_phone">Phone</label>
+                        <input type="number" name="receiver_phone" id="receiver_phone" class="form-control fs-3"
+                            value="{{ Auth::user()->phone }}">
+                        <small>Example: 81390xxx</small>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary">Order</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md">
+                <div class="row d-flex flex-column justify-content-center align-items-center my-3">
+                    <div class="col-md">
+                        <div class="table-responsive">
+                            <table class="table table-sm text-center">
+                                <thead class="fw-bold">
+                                    <tr>
+                                        <th class="align-middle">#</th>
+                                        <th class="align-middle">Image</th>
+                                        <th class="align-middle">Name</th>
+                                        <th class="align-middle">Description</th>
+                                        <th class="align-middle">Price (Rp)</th>
+                                        <th class="align-middle"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $price_co = 0;
+                                    @endphp
+                                    @foreach ($user_carts as $ucart => $user_cart)
+                                        <tr>
+                                            <td class="align-middle">{{ $ucart + 1 }}</td>
+                                            <td class="align-middle">
+                                                <img src="/products/{{ $user_cart->product->image }}"
+                                                    alt="{{ $user_cart->product->title }}" class="w-100 img-thumbnail">
+                                            </td>
+                                            <td class="align-middle">{{ $user_cart->product->title }}</td>
+                                            <td class="align-middle">{{ $user_cart->product->description }}</td>
+                                            <td class="align-middle">{{ $user_cart->product->price }}</td>
+                                            <td class="align-middle">
+                                                <a href="{{ url('/delete-product-cart', $user_cart->product->id) }}"
+                                                    class="btn btn-sm btn-danger"
+                                                    onclick="confirmation(event)">Delete</a>
+                                            </td>
+                                        </tr>
+                                        @php
+                                            $price_co += $user_cart->product->price;
+                                        @endphp
+                                    @endforeach
+                                    <tr>
+                                        <td colspan="4" class="align-middle"><b>Total Price (Rp)</b></td>
+                                        <td class="align-middle"><b>{{ $price_co }}</b></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

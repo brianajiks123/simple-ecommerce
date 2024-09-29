@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -104,6 +105,42 @@ class HomeController extends Controller
         } else {
             flash()->error('Product Deleted Successfully!');
         }
+
+        return redirect()->back();
+    }
+
+    // Order Product
+    public function userOrderProduct(Request $request)
+    {
+        // Get User Information
+        $user_id = Auth::user()->id;
+        $name = $request->receiver_name;
+        $address = $request->receiver_address;
+        $phone = $request->receiver_phone;
+
+        // Get User Cart
+        $user_carts = Cart::where('user_id', $user_id)->get();
+
+        // Store Product Ordering
+        foreach ($user_carts as $user_cart) {
+            $order = new Order;
+            $order->name = $name;
+            $order->receiver_address = $address;
+            $order->phone = $phone;
+            $order->user_id = $user_id;
+            $order->product_id = $user_cart->product_id;
+            $order->save();
+        }
+
+        // Remove User Cart
+        $user_carts_remove = Cart::where('user_id', $user_id)->get();
+
+        foreach ($user_carts_remove as $user_cart_remove) {
+            $user_cart_data = Cart::findOrFail($user_cart_remove->id);
+            $user_cart_data->delete();
+        }
+
+        flash()->success('Order Product Successfully.');
 
         return redirect()->back();
     }
