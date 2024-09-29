@@ -18,17 +18,13 @@
                                 </span>
                             </h6>
                         </div>
+                        <div class="detail-box mt-3">
+                            <a href="{{ url('product', $product->id) }}" class="btn btn-primary text-white">Details</a>
+                            <a href="{{ url('add-cart', $product->id) }}" class="btn btn-success text-white">Add
+                                Cart</a>
+                        </div>
                         <div class="new bg-info fw-bold text-white">
                             <span>New</span>
-                        </div>
-
-                        <div class="row d-flex justify-content-center align-items-center mt-3">
-                            <div class="col">
-                                <a href="{{ url('product', $product->id) }}" class="btn btn-primary text-white">Details</a>
-                            </div>
-                            <div class="col ml-3">
-                                <a href="{{ url('add-cart', $product->id) }}" class="btn btn-success text-white">Add Cart</a>
-                            </div>
                         </div>
                     </div>
                 </div>
