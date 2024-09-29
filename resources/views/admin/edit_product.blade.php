@@ -12,7 +12,7 @@
         @include('admin.sidebar_navigation')
 
         <div class="page-content">
-            @include('admin.product_content')
+            @include('admin.edit_product_content')
 
             <footer class="footer">
                 <div class="footer__block block no-margin-bottom">

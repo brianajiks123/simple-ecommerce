@@ -14,7 +14,7 @@
                 <div class="mb-3 d-flex align-items-center">
                     <input type="text" name="category" id="category" class="form-control fs-3 mx-auto"
                         style="flex: 1;">
-                    <button type="submit" class="btn btn-primary" style="margin-left: 10px;">Add Category</button>
+                    <button type="submit" class="btn btn-success" style="margin-left: 10px;">Add Category</button>
                 </div>
             </form>
         </div>
