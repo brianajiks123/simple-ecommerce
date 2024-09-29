@@ -40,5 +40,9 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div class="mt-4 d-flex justify-content-center align-items-center">
+            {{ $products->onEachSide(1)->links() }}
+        </div>
     </div>
 </div>

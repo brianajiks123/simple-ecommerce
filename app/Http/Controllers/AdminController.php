@@ -98,7 +98,7 @@ class AdminController extends Controller
     // Show Product View
     public function adminShowProduct()
     {
-        $products = Product::select('id', 'title', 'description', 'price', 'quantity', 'image', 'category')->get();
+        $products = Product::select('id', 'title', 'description', 'price', 'quantity', 'image', 'category')->paginate(3);
 
         return view('admin.show_product', compact('products'));
     }
