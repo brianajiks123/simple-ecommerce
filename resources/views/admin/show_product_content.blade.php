@@ -28,7 +28,8 @@
                             <img src="{{ asset('products/' . $product->image) }}" alt="{{ $product->title }}" height="120" width="120" class="img-fluid mx-auto d-block">
                         </td>
                         <td class="align-middle">{{ $product->title }}</td>
-                        <td class="align-middle">{{ $product->description }}</td>
+                        {{-- limit for character or words for text --}}
+                        <td class="align-middle">{!! Str::limit($product->description, 10, '...') !!}</td>
                         <td class="align-middle">{{ $product->category }}</td>
                         <td class="align-middle">{{ $product->price }}</td>
                         <td class="align-middle">{{ $product->quantity }}</td>
