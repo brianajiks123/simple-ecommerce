@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Cart;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -37,5 +40,21 @@ class HomeController extends Controller
         $product = Product::findOrFail($id);
 
         return view('home.product_detail', compact('product'));
+    }
+
+    // Cart
+    public function userAddCart($id)
+    {
+        $product_id = $id;
+        $user_id = Auth::user()->id;
+
+        $cart = new Cart;
+        $cart->user_id = $user_id;
+        $cart->product_id = $product_id;
+        $cart->save();
+
+        flash()->success('Addded to Cart Successfully.');
+
+        return redirect()->back();
     }
 }

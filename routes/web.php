@@ -19,6 +19,7 @@ Route::get('/', [HomeController::class, 'home']);
 
 Route::get('/dashboard', [HomeController::class, 'userDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/product/{id}', [HomeController::class, 'userProduct'])->name('userProduct');
+Route::get('/add-cart/{id}', [HomeController::class, 'userAddCart'])->middleware(['auth', 'verified'])->name('userAddCart');
 
 /* Admin */
 // Dashboard
