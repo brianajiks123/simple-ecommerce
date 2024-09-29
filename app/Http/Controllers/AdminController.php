@@ -103,6 +103,23 @@ class AdminController extends Controller
         return view('admin.show_product', compact('products'));
     }
 
+    // Search Product
+    public function adminSearchProduct(Request $request)
+    {
+        $search_inp = $request->search_product;
+        $products = Product::select('id', 'title', 'description', 'price', 'quantity', 'image', 'category')
+            ->where(function($query) use ($search_inp) {
+                $query->where('title', 'LIKE', '%' . $search_inp . '%')
+                    ->orWhere('category', 'LIKE', '%' . $search_inp . '%')
+                    ->orWhere('description', 'LIKE', '%' . $search_inp . '%')
+                    ->orWhere('price', 'LIKE', '%' . $search_inp . '%')
+                    ->orWhere('quantity', 'LIKE', '%' . $search_inp . '%');
+            })
+            ->paginate(3);
+
+        return view('admin.show_product', compact('products'));
+    }
+
     // Edit Product View
     public function adminEditProduct($id)
     {

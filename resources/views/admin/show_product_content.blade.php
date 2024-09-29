@@ -1,6 +1,23 @@
 <div class="page-header">
-    <div class="container-fluid">
-        <h2 class="h5 no-margin-bottom">Product</h2>
+    <div class="container-fluid d-flex">
+        <div class="col text-start">
+            <h2 class="h5 no-margin-bottom">Product</h2>
+        </div>
+
+        <div class="col text-end">
+            <form action="{{ route('adminSearchProduct') }}" method="get">
+                @csrf
+
+                <div class="row">
+                    <div class="col-8">
+                        <input type="search" name="search_product" id="search_product" class="form-control fs-3" placeholder="search product">
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-outline-secondary">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -25,7 +42,8 @@
                     <tr>
                         <td>{{ $prd + 1 }}</td>
                         <td class="align-middle">
-                            <img src="{{ asset('products/' . $product->image) }}" alt="{{ $product->title }}" height="120" width="120" class="img-fluid mx-auto d-block">
+                            <img src="{{ asset('products/' . $product->image) }}" alt="{{ $product->title }}"
+                                height="120" width="120" class="img-fluid mx-auto d-block">
                         </td>
                         <td class="align-middle">{{ $product->title }}</td>
                         {{-- limit for character or words for text --}}
@@ -35,7 +53,8 @@
                         <td class="align-middle">{{ $product->quantity }}</td>
                         <td class="align-middle">
                             <a href="{{ url('/admin/edit-product', $product->id) }}" class="btn btn-warning">Edit</a>
-                            <a href="{{ url('/admin/delete-product', $product->id) }}" class="btn btn-danger" onclick="confirmation(event)">Delete</a>
+                            <a href="{{ url('/admin/delete-product', $product->id) }}" class="btn btn-danger"
+                                onclick="confirmation(event)">Delete</a>
                         </td>
                     </tr>
                 @endforeach

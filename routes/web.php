@@ -32,6 +32,7 @@ Route::get('/admin/delete-category/{id}', [AdminController::class, 'adminDeleteC
 
 // Product
 Route::get('/admin/view-product', [AdminController::class, 'adminShowProduct'])->middleware(['auth', 'admin'])->name('adminShowProduct');
+Route::get('/admin/search-product', [AdminController::class, 'adminSearchProduct'])->middleware(['auth', 'admin'])->name('adminSearchProduct');
 Route::get('/admin/add-product', [AdminController::class, 'adminAddProduct'])->middleware(['auth', 'admin'])->name('adminAddProduct');
 Route::post('/admin/store-product', [AdminController::class, 'adminStoreProduct'])->middleware(['auth', 'admin'])->name('adminStoreProduct');
 Route::get('/admin/edit-product/{id}', [AdminController::class, 'adminEditProduct'])->middleware(['auth', 'admin'])->name('adminEditProduct');
