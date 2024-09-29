@@ -12,7 +12,7 @@ class AdminController extends Controller
     // Show Category View
     public function adminViewCategory()
     {
-        $categories = Category::select('id', 'name')->get();
+        $categories = Category::select('id', 'name')->paginate(3);
 
         return view('admin.category', compact('categories'));
     }
