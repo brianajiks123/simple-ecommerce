@@ -25,7 +25,7 @@
 
             <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('adminAddProduct') }}">Add Product</a></li>
-                <li><a href="#">Page</a></li>
+                <li><a href="{{ route('adminShowProduct') }}">Show Product</a></li>
                 <li><a href="#">Page</a></li>
             </ul>
         </li>

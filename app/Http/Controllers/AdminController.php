@@ -94,4 +94,12 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    // Show Product View
+    public function adminShowProduct()
+    {
+        $products = Product::select('id', 'title', 'description', 'price', 'quantity', 'image', 'category')->get();
+
+        return view('admin.show_product', compact('products'));
+    }
 }
