@@ -18,7 +18,7 @@ class HomeController extends Controller
     // Home Page
     public function home()
     {
-        $products = Product::orderBy('created_at', 'DESC')->get();
+        $products = Product::orderBy('created_at', 'DESC')->limit(3)->get();
 
         return view('home.index', compact('products'));
     }
@@ -26,7 +26,7 @@ class HomeController extends Controller
     // Dashboard
     public function userDashboard()
     {
-        $products = Product::orderBy('created_at', 'DESC')->get();
+        $products = Product::orderBy('created_at', 'DESC')->limit(3)->get();
 
         return view('home.index', compact('products'));
     }
