@@ -21,6 +21,10 @@ Route::get('/dashboard', [HomeController::class, 'userDashboard'])->middleware([
 Route::get('/product/{id}', [HomeController::class, 'userProduct'])->name('userProduct');
 Route::get('/add-cart/{id}', [HomeController::class, 'userAddCart'])->middleware(['auth', 'verified'])->name('userAddCart');
 
+// Cart
+Route::get('/user-cart', [HomeController::class, 'userCart'])->middleware(['auth', 'verified'])->name('userCart');
+Route::get('/delete-product-cart/{id}', [HomeController::class, 'userDeleteProductCart'])->middleware(['auth', 'verified'])->name('userDeleteProductCart');
+
 /* Admin */
 // Dashboard
 Route::get('/admin/dashboard', [HomeController::class, 'adminHome'])->middleware(['auth', 'admin'])->name('adminHome');

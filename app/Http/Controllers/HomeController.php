@@ -75,4 +75,36 @@ class HomeController extends Controller
 
         return redirect()->back();
     }
+
+    public function userCart()
+    {
+        $user_product_count = 0;
+
+        if (Auth::id()) {
+            $user_id = Auth::user()->id;
+            $user_product_count = Cart::where('user_id', $user_id)->count();
+            $user_carts = Cart::where('user_id', $user_id)->get();
+        }
+
+        return view('home.user_cart', compact('user_product_count', 'user_carts'));
+    }
+
+    // Delete Product Cart
+    public function userDeleteProductCart($productId)
+    {
+        // Get User Cart
+        $user_id = Auth::user()->id;
+        $user_cart = Cart::where('user_id', $user_id)->where('product_id', $productId)->first();
+
+        // Get Product Associate with User
+        if ($user_cart) {
+            $user_cart->delete();
+
+            flash()->success('Product Deleted Successfully.');
+        } else {
+            flash()->error('Product Deleted Successfully!');
+        }
+
+        return redirect()->back();
+    }
 }

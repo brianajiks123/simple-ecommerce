@@ -37,7 +37,7 @@
             <div class="user_option">
                 @if (Route::has('login'))
                     @auth
-                        <a href="" style="position: relative; display: inline-block;">
+                        <a href="{{ route('userCart') }}" style="position: relative; display: inline-block;">
                             <i class="fa fa-shopping-bag" aria-hidden="true" style="font-size: 24px; color: #333;"></i>
                             <span class="fw-bold bg-warning" style="position: absolute; top: -10px; left: 8px; padding: 1px 8px; border-radius: 50%; font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">{{ $user_product_count }}</span>
                         </a>
