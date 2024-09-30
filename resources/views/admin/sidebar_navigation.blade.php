@@ -12,7 +12,7 @@
     </div>
     <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
     <ul class="list-unstyled">
-        <li class="active">
+        <li>
             <a href="{{ route('adminHome') }}"> <i class="icon-home"></i>Home </a>
         </li>
         <li>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,12 @@ class HomeController extends Controller
     // Home Page
     public function adminHome()
     {
-        return view('admin.index');
+        $user_count = User::where('usertype', 'user')->get()->count();
+        $product_count = Product::all()->count();
+        $order_count = Order::all()->count();
+        $delivered_count = Order::where('status', 'Delivered')->get()->count();
+
+        return view('admin.index', compact('user_count', 'product_count', 'order_count', 'delivered_count'));
     }
 
     /* User */
