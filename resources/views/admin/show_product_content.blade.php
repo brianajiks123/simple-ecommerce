@@ -34,7 +34,7 @@
                     <th>Category</th>
                     <th>Price (Rp)</th>
                     <th>Qty.</th>
-                    <th>Edit / Delete</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>

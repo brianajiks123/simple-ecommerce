@@ -25,17 +25,17 @@
 
                     <div class="mb-3">
                         <label for="receiver_name">Full Name</label>
-                        <input type="text" name="receiver_name" id="receiver_name" class="form-control fs-3"
+                        <input type="text" name="receiver_name" id="receiver_name" class="form-control fs-6"
                             placeholder="full name" value="{{ Auth::user()->name }}">
                     </div>
                     <div class="mb-3">
                         <label for="receiver_address">Address</label>
-                        <textarea name="receiver_address" id="receiver_address" class="form-control fs-3" cols="30" rows="10"
+                        <textarea name="receiver_address" id="receiver_address" class="form-control fs-6" cols="30" rows="10"
                             placeholder="address">{{ Auth::user()->address }}</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="receiver_phone">Phone</label>
-                        <input type="number" name="receiver_phone" id="receiver_phone" class="form-control fs-3"
+                        <input type="number" name="receiver_phone" id="receiver_phone" class="form-control fs-6"
                             value="{{ Auth::user()->phone }}">
                         <small>Example: 81390xxx</small>
                     </div>
