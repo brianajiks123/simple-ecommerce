@@ -52,7 +52,7 @@
                         <td class="align-middle">{{ $product->price }}</td>
                         <td class="align-middle">{{ $product->quantity }}</td>
                         <td class="align-middle">
-                            <a href="{{ url('/admin/edit-product', $product->id) }}" class="btn btn-warning">Edit</a>
+                            <a href="{{ url('/admin/edit-product', $product->slug) }}" class="btn btn-warning">Edit</a>
                             <a href="{{ url('/admin/delete-product', $product->id) }}" class="btn btn-danger"
                                 onclick="confirmation(event)">Delete</a>
                         </td>
