@@ -220,4 +220,20 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    // Search Order Product
+    public function adminSearchOrderProduct(Request $request)
+    {
+        $search_inp = $request->search_order_product;
+        $orders = Order::orderBy('created_at', 'DESC')
+            ->where(function($query) use ($search_inp) {
+                $query->where('name', 'LIKE', '%' . $search_inp . '%')
+                    ->orWhere('receiver_address', 'LIKE', '%' . $search_inp . '%')
+                    ->orWhere('phone', 'LIKE', '%' . $search_inp . '%')
+                    ->orWhere('status', 'LIKE', '%' . $search_inp . '%');
+            })
+            ->paginate(3);
+
+        return view('admin.show_order', compact('orders'));
+    }
 }

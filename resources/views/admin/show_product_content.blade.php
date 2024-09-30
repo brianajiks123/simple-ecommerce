@@ -10,7 +10,7 @@
 
                 <div class="row">
                     <div class="col-8">
-                        <input type="search" name="search_product" id="search_product" class="form-control fs-3" placeholder="search product">
+                        <input type="search" name="search_product" id="search_product" class="form-control fs-6" placeholder="search product">
                     </div>
                     <div class="col">
                         <button type="submit" class="btn btn-outline-secondary">Search</button>

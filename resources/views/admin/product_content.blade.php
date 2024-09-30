@@ -18,7 +18,7 @@
                                 <label for="title" class="col-form-label">Product Name</label>
                             </div>
                             <div class="col">
-                                <input type="text" name="title" id="title" class="form-control fs-3"
+                                <input type="text" name="title" id="title" class="form-control fs-6"
                                     placeholder="title" required>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                                 <label for="price" class="col-form-label">Price (Rp)</label>
                             </div>
                             <div class="col">
-                                <input type="number" name="price" id="price" class="form-control fs-3"
+                                <input type="number" name="price" id="price" class="form-control fs-6"
                                     placeholder="price" required>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                 <label for="quantity" class="col-form-label">Qty.</label>
                             </div>
                             <div class="col">
-                                <input type="number" name="quantity" id="quantity" class="form-control fs-3"
+                                <input type="number" name="quantity" id="quantity" class="form-control fs-6"
                                     placeholder="quantity" required>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                 <label for="description" class="col-form-label">Description</label>
                             </div>
                             <div class="col">
-                                <textarea name="description" id="description" class="form-control fs-3" rows="3" placeholder="description"
+                                <textarea name="description" id="description" class="form-control fs-6" rows="3" placeholder="description"
                                     required></textarea>
                             </div>
                         </div>

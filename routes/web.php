@@ -50,5 +50,6 @@ Route::get('/admin/delete-product/{id}', [AdminController::class, 'adminDeletePr
 
 // Order
 Route::get('/admin/view-order', [AdminController::class, 'adminShowOrder'])->middleware(['auth', 'admin'])->name('adminShowOrder');
+Route::get('/admin/search-order-product', [AdminController::class, 'adminSearchOrderProduct'])->middleware(['auth', 'admin'])->name('adminSearchOrderProduct');
 Route::get('/admin/process-otw/{id}', [AdminController::class, 'adminProcessOtw'])->middleware(['auth', 'admin'])->name('adminProcessOtw');
 Route::get('/admin/process-delivered/{id}', [AdminController::class, 'adminProcessDelivered'])->middleware(['auth', 'admin'])->name('adminProcessDelivered');

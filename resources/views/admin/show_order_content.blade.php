@@ -5,13 +5,13 @@
         </div>
 
         <div class="col text-end">
-            <form action="{{ route('adminSearchProduct') }}" method="get">
+            <form action="{{ route('adminSearchOrderProduct') }}" method="get">
                 @csrf
 
                 <div class="row">
                     <div class="col-8">
                         <input type="search" name="search_order_product" id="search_order_product"
-                            class="form-control fs-3" placeholder="search order product">
+                            class="form-control fs-6" placeholder="search order product">
                     </div>
                     <div class="col">
                         <button type="submit" class="btn btn-outline-secondary">Search</button>
