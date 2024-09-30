@@ -27,9 +27,10 @@
                                 <th class="align-middle">#</th>
                                 <th class="align-middle">Image</th>
                                 <th class="align-middle">Product Name</th>
-                                <th class="align-middle">Price (Rp)</th>
+                                <th class="align-middle">Price (JPY)</th>
                                 <th class="align-middle">Order Time</th>
                                 <th class="align-middle">Delivery Status</th>
+                                <th class="align-middle">Payment Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,6 +51,13 @@
                                             <span class="badge text-bg-warning">On the way</span>
                                         @elseif($user_order->status === 'Delivered')
                                             <span class="badge text-bg-success">Delivered</span>
+                                        @endif
+                                    </td>
+                                    <td class="align-middle">
+                                        @if ($user_order->payment_status === 'Paid')
+                                            <span class="badge text-bg-success">Paid</span>
+                                        @elseif($user_order->payment_status === 'Cash on Delivery')
+                                            <span class="badge text-bg-warning">Cash on Delivery</span>
                                         @endif
                                     </td>
                                 </tr>

@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Stripe;
 
 class HomeController extends Controller
 {
@@ -161,6 +162,60 @@ class HomeController extends Controller
 
         flash()->success('Order Product Successfully.');
 
-        return redirect()->back();
+        return redirect('/user-order');
+    }
+
+    // Payment
+    public function stripe($value)
+    {
+        return view('home.stripe', compact('value'));
+    }
+
+    public function stripePost(Request $request, $value)
+    {
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        // Card Number: 4242 4242 4242 4242
+        // CVC: 123
+        // Expired: 12/2028
+        Stripe\Charge::create ([
+            "amount" => $value,
+            "currency" => "jpy",
+            "source" => $request->stripeToken,
+            "description" => "Test payment from " . config('app.name') 
+        ]);
+
+        // Get User Information
+        $user_id = Auth::user()->id;
+        $name = Auth::user()->name;
+        $address = Auth::user()->address;
+        $phone = Auth::user()->phone;
+
+        // Get User Cart
+        $user_carts = Cart::where('user_id', $user_id)->get();
+
+        // Store Product Ordering
+        foreach ($user_carts as $user_cart) {
+            $order = new Order;
+            $order->name = $name;
+            $order->receiver_address = $address;
+            $order->phone = $phone;
+            $order->payment_status = "Paid";
+            $order->user_id = $user_id;
+            $order->product_id = $user_cart->product_id;
+            $order->save();
+        }
+
+        // Remove User Cart
+        $user_carts_remove = Cart::where('user_id', $user_id)->get();
+
+        foreach ($user_carts_remove as $user_cart_remove) {
+            $user_cart_data = Cart::findOrFail($user_cart_remove->id);
+            $user_cart_data->delete();
+        }
+
+        flash()->success('Order Product Successfully.');
+
+        return redirect('/user-order');
     }
 }

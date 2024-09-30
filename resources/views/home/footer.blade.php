@@ -74,10 +74,7 @@
     <!-- footer section -->
     <footer class=" footer_section">
         <div class="container">
-            <p>
-                &copy; <span id="displayYear"></span> All Rights Reserved By
-                <a href="https://html.design/">Web Tech Knowledge</a>
-            </p>
+            <p class="no-margin-bottom">&copy; {{ date('Y') }} Brian Aji Pamungkas</p>
         </div>
     </footer>
     <!-- footer section -->

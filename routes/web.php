@@ -29,6 +29,12 @@ Route::get('/delete-product-cart/{id}', [HomeController::class, 'userDeleteProdu
 Route::get('/user-order', [HomeController::class, 'userOrder'])->middleware(['auth', 'verified'])->name('userOrder');
 Route::post('/order-product', [HomeController::class, 'userOrderProduct'])->middleware(['auth', 'verified'])->name('userOrderProduct');
 
+// Payment (Stripe)
+Route::controller(HomeController::class)->group(function(){
+    Route::get('stripe/{value}', 'stripe');
+    Route::post('stripe/{value}', 'stripePost')->name('stripe.post');
+});
+
 /* Admin */
 // Dashboard
 Route::get('/admin/dashboard', [HomeController::class, 'adminHome'])->middleware(['auth', 'admin'])->name('adminHome');

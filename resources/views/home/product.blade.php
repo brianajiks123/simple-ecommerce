@@ -14,7 +14,7 @@
                             <h6>{{ $product->title }}</h6>
                             <h6>
                                 <span>
-                                    Rp. {{ $product->price }}
+                                    JPY. {{ $product->price }}
                                 </span>
                             </h6>
                         </div>

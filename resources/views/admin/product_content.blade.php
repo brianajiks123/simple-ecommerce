@@ -48,7 +48,7 @@
                     <div class="col">
                         <div class="row">
                             <div class="col-4 text-start">
-                                <label for="price" class="col-form-label">Price (Rp)</label>
+                                <label for="price" class="col-form-label">Price (JPY)</label>
                             </div>
                             <div class="col">
                                 <input type="number" name="price" id="price" class="form-control fs-6"

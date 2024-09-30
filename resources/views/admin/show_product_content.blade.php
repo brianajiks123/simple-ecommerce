@@ -32,7 +32,7 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Category</th>
-                    <th>Price (Rp)</th>
+                    <th>Price (JPY)</th>
                     <th>Qty.</th>
                     <th></th>
                 </tr>

@@ -34,7 +34,7 @@
                     <th>Phone</th>
                     <th>Image</th>
                     <th>Product Name</th>
-                    <th>Price (Rp)</th>
+                    <th>Price (JPY)</th>
                     <th>Status</th>
                     <th></th>
                     <th></th>
