@@ -1,12 +1,12 @@
 <!-- Basic -->
-<meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Mobile Metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <!-- Site Metas -->
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<meta name="author" content="" />
+<meta name="author" content="Brian Aji Pamungkas" />
 <link rel="shortcut icon" href="{{ asset('ecommerce/images/favicon.png') }}" type="image/x-icon">
 
 <title>Simple E-Commerce</title>
@@ -16,7 +16,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
 <!-- bootstrap core css -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+@vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 <!-- Custom styles for this template -->
 <link href="{{ asset('ecommerce/css/style.css') }}" rel="stylesheet" />

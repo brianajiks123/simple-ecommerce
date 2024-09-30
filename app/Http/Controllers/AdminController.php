@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
 {
@@ -235,5 +236,18 @@ class AdminController extends Controller
             ->paginate(3);
 
         return view('admin.show_order', compact('orders'));
+    }
+
+    // Print Order Product
+    public function adminPrintOrderProduct($id)
+    {
+        $order = Order::findOrFail($id);
+
+        Pdf::setOptions(['dpi' => 150, 'isHtml5ParserEnabled' => true, 'defaultFont' => 'sans-serif']);
+        $pdf = Pdf::loadView('admin.invoice', compact('order'));
+
+        return $pdf->download('invoice.pdf');
+        // return $pdf->stream('invoice.pdf');
+        // return view('admin.invoice', compact('order'));
     }
 }

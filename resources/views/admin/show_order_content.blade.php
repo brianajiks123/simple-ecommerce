@@ -37,6 +37,7 @@
                     <th>Price (Rp)</th>
                     <th>Status</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -46,14 +47,14 @@
                         <td class="align-middle">{{ $order->name }}</td>
                         <td class="align-middle">{{ $order->receiver_address }}</td>
                         <td class="align-middle">{{ $order->phone }}</td>
-                        <td class="align-middle" class="align-middle">
+                        <td class="align-middle">
                             <img src="{{ asset('products/' . $order->product->image) }}"
                                 alt="{{ $order->product->title }}" height="120" width="120"
                                 class="img-fluid mx-auto d-block">
                         </td>
-                        <td class="align-middle" class="align-middle">{{ $order->product->title }}</td>
-                        <td class="align-middle" class="align-middle">{{ $order->product->price }}</td>
-                        <td class="align-middle" class="align-middle">
+                        <td class="align-middle">{{ $order->product->title }}</td>
+                        <td class="align-middle">{{ $order->product->price }}</td>
+                        <td class="align-middle">
                             @if ($order->status === 'in progress')
                                 <span class="badge text-bg-danger">in progress</span>
                             @elseif($order->status === 'On the way')
@@ -62,10 +63,13 @@
                                 <span class="badge text-bg-success">Delivered</span>
                             @endif
                         </td>
-                        <td class="align-middle" class="align-middle">
+                        <td class="align-middle">
                             <a href="{{ url('/admin/process-otw', $order->id) }}" class="btn btn-warning">On the way</a>
                             <a href="{{ url('/admin/process-delivered', $order->id) }}"
                                 class="btn btn-success">Delivered</a>
+                        </td>
+                        <td class="align-middle">
+                            <a href="{{ url('/admin/print-order-product', $order->id) }}" class="btn btn-primary">Print PDF</a>
                         </td>
                     </tr>
                 @endforeach

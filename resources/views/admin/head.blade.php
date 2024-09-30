@@ -1,11 +1,12 @@
-<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Simple E-Commerce | Admin Page</title>
 <meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Brian Aji Pamungkas" />
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta name="robots" content="all,follow">
-<!-- Bootstrap CSS-->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<!-- bootstrap core css -->
+@vite(['resources/sass/app.scss', 'resources/js/app.js'])
 <!-- Font Awesome CSS-->
 <link rel="stylesheet" href="{{ asset('admin/vendor/font-awesome/css/font-awesome.min.css') }}">
 <!-- Custom Font Icons CSS-->
@@ -18,6 +19,6 @@
 <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
 <!-- Favicon-->
 <link rel="shortcut icon" href="{{ asset('admin/img/favicon.ico') }}">
-<!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+<!-- Tweaks for older IEs (9)-->
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
