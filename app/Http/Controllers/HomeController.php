@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMsgContact;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Stripe;
 
 class HomeController extends Controller
@@ -65,6 +67,20 @@ class HomeController extends Controller
         }
 
         return view('home.product_detail', compact('product', 'user_product_count'));
+    }
+
+    // Shop
+    public function userShop()
+    {
+        $products = Product::orderBy('created_at', 'DESC')->get();
+        $user_product_count = 0;
+
+        if (Auth::id()) {
+            $user_id = Auth::user()->id;
+            $user_product_count = Cart::where('user_id', $user_id)->count();
+        }
+
+        return view('home.shop', compact('products', 'user_product_count'));
     }
 
     // Cart
@@ -182,7 +198,7 @@ class HomeController extends Controller
             "amount" => $value,
             "currency" => "jpy",
             "source" => $request->stripeToken,
-            "description" => "Test payment from " . config('app.name') 
+            "description" => "Test payment from " . config('app.name')
         ]);
 
         // Get User Information
@@ -217,5 +233,69 @@ class HomeController extends Controller
         flash()->success('Order Product Successfully.');
 
         return redirect('/user-order');
+    }
+
+    // Why Us
+    public function userWhyUs()
+    {
+        $user_product_count = 0;
+
+        if (Auth::id()) {
+            $user_id = Auth::user()->id;
+            $user_product_count = Cart::where('user_id', $user_id)->count();
+        }
+
+        return view('home.why_us', compact('user_product_count'));
+    }
+
+    // Testimonial
+    public function userTestimonial()
+    {
+        $user_product_count = 0;
+
+        if (Auth::id()) {
+            $user_id = Auth::user()->id;
+            $user_product_count = Cart::where('user_id', $user_id)->count();
+        }
+
+        return view('home.testimonial', compact('user_product_count'));
+    }
+
+    // Contact Us
+    public function userContactUs()
+    {
+        $user_product_count = 0;
+
+        if (Auth::id()) {
+            $user_id = Auth::user()->id;
+            $user_product_count = Cart::where('user_id', $user_id)->count();
+        }
+
+        return view('home.contact_us', compact('user_product_count'));
+    }
+
+    // Send Message
+    public function userSendMsg(Request $request)
+    {
+        $user_product_count = 0;
+
+        if (Auth::id()) {
+            $user_id = Auth::user()->id;
+            $user_product_count = Cart::where('user_id', $user_id)->count();
+        }
+
+        // Sending Message
+        $receiver_mail = "brianajiks123@gmail.com";
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'msg' => $request->msg,
+        ];
+        Mail::to($receiver_mail)->send(new SendMsgContact($data));
+
+        flash()->success('Sending Message Successfully.');
+
+        return view('home.contact_us', compact('user_product_count'));
     }
 }

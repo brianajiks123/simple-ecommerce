@@ -21,12 +21,6 @@
     @include('home.product')
     <!-- end product section -->
 
-    <!-- contact section -->
-    @include('home.contact')
-
-    <br><br><br>
-    <!-- end contact section -->
-
     <!-- footer section -->
     @include('home.footer')
     <!-- end footer section -->

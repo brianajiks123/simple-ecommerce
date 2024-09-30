@@ -21,6 +21,9 @@ Route::get('/dashboard', [HomeController::class, 'userDashboard'])->middleware([
 Route::get('/product/{id}', [HomeController::class, 'userProduct'])->name('userProduct');
 Route::get('/add-cart/{id}', [HomeController::class, 'userAddCart'])->middleware(['auth', 'verified'])->name('userAddCart');
 
+// Shop
+Route::get('/shop', [HomeController::class, 'userShop'])->middleware(['auth', 'verified'])->name('userShop');
+
 // Cart
 Route::get('/user-cart', [HomeController::class, 'userCart'])->middleware(['auth', 'verified'])->name('userCart');
 Route::get('/delete-product-cart/{id}', [HomeController::class, 'userDeleteProductCart'])->middleware(['auth', 'verified'])->name('userDeleteProductCart');
@@ -34,6 +37,16 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('stripe/{value}', 'stripe');
     Route::post('stripe/{value}', 'stripePost')->name('stripe.post');
 });
+
+// Why Us
+Route::get('/why-us', [HomeController::class, 'userWhyUs'])->middleware(['auth', 'verified'])->name('userWhyUs');
+
+// Testimonial
+Route::get('/testimonial', [HomeController::class, 'userTestimonial'])->middleware(['auth', 'verified'])->name('userTestimonial');
+
+// Contact Us
+Route::get('/contact-us', [HomeController::class, 'userContactUs'])->middleware(['auth', 'verified'])->name('userContactUs');
+Route::get('/send-msg', [HomeController::class, 'userSendMsg'])->middleware(['auth', 'verified'])->name('userSendMsg');
 
 /* Admin */
 // Dashboard

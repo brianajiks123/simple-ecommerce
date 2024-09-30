@@ -36,6 +36,7 @@
                     <th>Product Name</th>
                     <th>Price (JPY)</th>
                     <th>Status</th>
+                    <th>Payment Status</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -64,12 +65,27 @@
                             @endif
                         </td>
                         <td class="align-middle">
-                            <a href="{{ url('/admin/process-otw', $order->id) }}" class="btn btn-warning">On the way</a>
-                            <a href="{{ url('/admin/process-delivered', $order->id) }}"
-                                class="btn btn-success">Delivered</a>
+                            @if ($order->payment_status === 'Paid')
+                                <span class="badge text-bg-success">Paid</span>
+                            @elseif($order->payment_status === 'Cash on Delivery')
+                                <span class="badge text-bg-warning">Cash on Delivery</span>
+                            @endif
                         </td>
                         <td class="align-middle">
-                            <a href="{{ url('/admin/print-order-product', $order->id) }}" class="btn btn-primary">Print PDF</a>
+                            <div class="row d-flex flex-column justify-content-center align-items-center">
+                                <div class="col mb-3">
+                                    <a href="{{ url('/admin/process-otw', $order->id) }}" class="btn btn-sm btn-warning">On the
+                                        way</a>
+                                </div>
+                                <div class="col">
+                                    <a href="{{ url('/admin/process-delivered', $order->id) }}"
+                                        class="btn btn-sm btn-success">Delivered</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <a href="{{ url('/admin/print-order-product', $order->id) }}" class="btn btn-sm btn-primary">Print
+                                PDF</a>
                         </td>
                     </tr>
                 @endforeach

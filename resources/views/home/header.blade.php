@@ -16,22 +16,16 @@
                     <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="shop.html">
-                        Shop
-                    </a>
+                    <a class="nav-link" href="{{ route('userShop') }}">Shop</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="why.html">
-                        Why Us
-                    </a>
+                    <a class="nav-link" href="{{ route('userWhyUs') }}">Why Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="testimonial.html">
-                        Testimonial
-                    </a>
+                    <a class="nav-link" href="{{ route('userTestimonial') }}">Testimonial</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
+                    <a class="nav-link" href="{{ route('userContactUs') }}">Contact Us</a>
                 </li>
             </ul>
             <div class="user_option">
@@ -68,12 +62,6 @@
                         </a>
                     @endauth
                 @endif
-
-                {{-- <form class="form-inline ">
-                    <button class="btn nav_search-btn" type="submit">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                </form> --}}
             </div>
         </div>
     </nav>
