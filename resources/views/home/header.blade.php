@@ -1,6 +1,6 @@
 <header class="header_section">
     <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="{{ url('/') }}">
             <span>
                 Simple E-Commerce
             </span>
@@ -37,9 +37,13 @@
             <div class="user_option">
                 @if (Route::has('login'))
                     @auth
+                        <a href="{{ route('userOrder') }}" style="position: relative; display: inline-block;">
+                            My Order
+                        </a>
                         <a href="{{ route('userCart') }}" style="position: relative; display: inline-block;">
                             <i class="fa fa-shopping-bag" aria-hidden="true" style="font-size: 24px; color: #333;"></i>
-                            <span class="fw-bold bg-warning" style="position: absolute; top: -10px; left: 8px; padding: 1px 8px; border-radius: 50%; font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">{{ $user_product_count }}</span>
+                            <span class="fw-bold bg-warning"
+                                style="position: absolute; top: -10px; left: 8px; padding: 1px 8px; border-radius: 50%; font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">{{ $user_product_count }}</span>
                         </a>
 
                         <form method="POST" action="{{ route('logout') }}" class="ml-4">

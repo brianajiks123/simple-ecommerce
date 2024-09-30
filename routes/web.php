@@ -26,6 +26,7 @@ Route::get('/user-cart', [HomeController::class, 'userCart'])->middleware(['auth
 Route::get('/delete-product-cart/{id}', [HomeController::class, 'userDeleteProductCart'])->middleware(['auth', 'verified'])->name('userDeleteProductCart');
 
 // Order
+Route::get('/user-order', [HomeController::class, 'userOrder'])->middleware(['auth', 'verified'])->name('userOrder');
 Route::post('/order-product', [HomeController::class, 'userOrderProduct'])->middleware(['auth', 'verified'])->name('userOrderProduct');
 
 /* Admin */

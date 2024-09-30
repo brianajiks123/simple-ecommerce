@@ -114,6 +114,20 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
+    // Order
+    public function userOrder()
+    {
+        $user_product_count = 0;
+
+        if (Auth::id()) {
+            $user_id = Auth::user()->id;
+            $user_product_count = Cart::where('user_id', $user_id)->count();
+            $user_orders = Order::orderBy('created_at', 'DESC')->where('user_id', $user_id)->paginate(3);
+        }
+
+        return view('home.order', compact('user_product_count', 'user_orders'));
+    }
+
     // Order Product
     public function userOrderProduct(Request $request)
     {
